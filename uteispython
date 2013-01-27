@@ -1,0 +1,154 @@
+biblioteca para enviar email
+>>> import smtplib
+
+Shell code from python
+>>> import subprocess
+>>> subprocess.call(['./test.sh']) 
+
+Manipulando banco de dados mysql
+my = db.connect("localhost","root","","site")
+cursor = my.cursor()
+cursor.execute("SELECT VERSION()")
+try:
+    cursor.execute("SELECT * FROM noticias")
+    my.commit()
+    print cursor.fetchall()[1][2]
+except:
+    my.rollback()
+    print "lol"
+my.close()
+
+Colocar outro nome em uma classe importada
+ex: import MySQLdb as db
+
+Testar se uma variavel existe
+# Ensure variable is defined
+try:
+    x
+except NameError:
+    x = None
+# Test whether variable is defined to be None
+if x is None:
+    some_fallback_operation()
+else:
+    some_operation(x)
+
+tuplas listas e dicionarios como parametros
+ex:
+def teste(x):
+    print x
+L = {'rod' : 'road' , 1 : 'gelop' }
+teste(L)
+
+self
+Somente temos que colocar o self como primeiro parâmetro de um método tipo função. Não precisa se for uma função fora da classe. O self indica o objeto instanciado.
+
+self._private_var
+membro privado por convenção
+
+def teste(**dados) e def teste(*dados)
+* e ** é uma forma de expansão/contração dos parâmetros
+basicamente, se voce cria uma funçao def teste(*args) , pode passar quantos parâmetros quiser , todos eles vão cair na tupla 'args'
+com o ** é a mesma coisa só que para parâmetros nomeados (dicionarios)
+def teste(**dados): ...
+na hora de xamar
+teste(nome='lkzone',linguagem='python')
+neste caso 'dados' será uma referencia a um dicionario com duas chaves e dois valores . Dados seria {'nome': 'lkzone', 'linguagem':'python'}
+
+__new__() e __init__()
+O contrutor é um método especial , chamado __new__(). Após a chamado ao construtor, o método __init__() é chamado
+
+metodos privados
+class folks:
+    score = 120
+    cscore__ = 20
+
+
+for
+for new_var in array_:
+    print new_var,"\n"
+
+if and else
+if 1 == 1 \
+and 2 == 2 \
+and 3 == 4:
+    print "forbidden"
+else:
+    print "poker"
+
+todo script python deve começar com os seguintes codigos
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+Parenteses no print faz a saida virar uma tupla
+ex: print ("oi ", nome , "\n", "eu sou um alse")
+
+.split() e .join()
+print 'source,ware'.split(',')
+print '+'.join(['source', 'ware'])
+Resultado:
+['source', 'ware']
+source+ware
+
+strip just e center
+print "--", 'source'.ljust(10), "--"
+print "--", 'source'.rjust(10), "--"
+print "--", 'source'.center(10), "--"
+print "--", '   source   '.strip(), "--"
+print "--", '   source   '.rstrip(), "--"
+print "--", '   source   '.lstrip(), "--"
+Resultado:
+-- source     --
+--     source --
+--   source   --
+-- source --
+--    source --
+-- source    --
+
+.isalnum() , .isalpha() , .isdigit() , .isspace()
+print "'123#abc' só contém letras e números?", '123#abc'.isalnum()
+print "'abc' só contém letras?", 'abc'.isalpha()
+print "'123' só contém digitos?", '123'.isdigit()
+print "'abc ' só contém espaços?", 'abc'.isspace()
+
+.count()
+A função “count” conta o número de vezes que uma string ou caractere dado como parâmetro, aparece na string original.
+Exemplo:
+print "Número de 'r's em 'sourceware':", 'sourceware'.count("r")
+Resultado:
+Número de 'r's em 'sourceware': 2
+Veja mais em Tutorial de Python - Funções para Strings | Sourceware Blog
+
+
+.str()
+>>> numero = 12.45
+>>> string = str(numero)
+>>> string
+'12.45'
+
+.find()
+>>>nome = 'python'
+>>> nome.find('t')
+2
+
+capitalize() retorna a primeira letra de string em maiúscula, mas sem alterar o valor da string atual. Tambem tem o upper(), e o lower()
+
+.partition()
+>>> "2.7.0_bf4fda703454".partition('_')
+('2.7.0', '_', 'bf4fda703454')
+
+sys.argv[1]
+array de argumentos quando passado pela linha de comandos
+
+.replace()
+>>> nome = 'mergulhando em java'
+>>> nome = nome.replace(' em java', ' no python')
+>>> nome
+'mergulando no python'
+
+.strip()
+>>> nome = '     python e muito bom    '
+>>> nome.strip()
+'python e muito bom'
+
+
