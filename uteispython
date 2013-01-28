@@ -1,3 +1,44 @@
+INFOS:
+[13:00] <gwidion> lkzone: Os maiores porblemas sao: Threads em Python nao dao ganho de performance a nao ser que as tarefas tenham gargalos de I/O (rede inclusa) - -e quando voce tem que sincornizar dados.
+[13:09] <gwidion> cobrinha exec import sys; import time; from threading import Thread; X = type("bla", (Thread,), {"run": lambda s: [sys.stdout.write(  str((time.sleep(.2),i )[1])+"\n")  for i in range(10) ]});[X().start() for _ in range(5)]
+[13:11] <gwidion> sim - um dos jeitos de fazer é cria ruma subclasse de Thread,e sobre-escrever o método "run"
+[13:12] <gwidion> (é isso que eu faço acima, mas pra ficar numa linha usei a chamad aa "type" em vez da keyword "class" )
+[13:14] <gwidion> por que se precisar de um projtosolido que iria se beneficiar de execução concorrente, o negocio é usar ou um frameword de execuçaõ assincrona, ou execução em multiplos processos.
+[13:17] <gwidion> se voce vai precisar de uma unica thread separada para executar uma função, nao precisa faze ruma subclasse de Thread
+[13:17] <gwidion> voce instancia a Thread e fala que o atributo "target" dela é a função que voce quer executar, sem parametros
+[13:17] <gwidion> e ai faz o start()
+import sys
+import time
+from threading import Thread
+
+class X(Thread):
+    def run(self):
+        for i in range(10):
+            time.sleep(.2)
+            print i
+
+for j in range(5):
+   x = X()
+   x.start()
+
+[13:24] <lkzone> o método run é um método obrigatório da Thread?
+[13:25] <gwidion> lkzone: nao - como eu disse, o metodo "run"  padrão executa a funçao "target" do objeto, se houver.
+
+wiki do pythonbrasil
+
+if inline
+print ("oo" if 1>2 else "ii")
+
+Biblioteca para conexao SSH
+>>> import pexpect
+
+Métodos estáticos
+class MyClass(object):
+    @staticmethod
+    def the_static_method(x):
+        print x
+MyClass.the_static_method(2) # outputs 2
+
 biblioteca para enviar email
 >>> import smtplib
 
